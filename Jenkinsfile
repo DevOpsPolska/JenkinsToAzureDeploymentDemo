@@ -1,6 +1,10 @@
 pipeline {
+    
     agent any
-
+    environment {
+        $RESOURCE_GROUP_NAME = 'jenkinstoazuredeploymentdemorg'
+        $LOCATION   = 'eastus'
+    }
     stages {
         stage('Deploy') {
             steps{
