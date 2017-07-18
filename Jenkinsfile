@@ -20,7 +20,7 @@ pipeline {
                     sh "az group create \
                     --name $RESOURCE_GROUP_NAME \
                     --location $LOCATION"
-
+                    sh 'ls -las'
                     echo 'End of Deployment'
                 }
             }
