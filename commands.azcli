@@ -1,1 +1,3 @@
 ssh -L 127.0.0.1:8080:localhost:8080 username@jenkinsonexp.eastus.cloudapp.azure.com
+az vm start --resource-group jenkinsonerg --name jenkinsone --verbose
+az vm deallocate --resource-group jenkinsonerg --name jenkinsone --verbose
