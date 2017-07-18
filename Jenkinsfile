@@ -22,10 +22,11 @@ pipeline {
                     sh 'ls -las'
 
                     sh "az group deployment validate \
-                    --name 'ExampleDeployment' \
                     --resource-group $RESOURCE_GROUP_NAME \
                     --template-file deployment.json \
-                    --parameters @deployment.parameters.json"
+                    --parameters @deployment.parameters.json \
+                    --verbose"
+                    
 
                     echo 'End of Deployment'
                 }
