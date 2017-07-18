@@ -11,7 +11,6 @@ pipeline {
                 withCredentials([azureServicePrincipal('azurefem')]) {
                     // sh 'echo $AZURE_SUBSCRIPTION_ID'
                     // sh 'echo $AZURE_CLIENT_ID'
-
                     //echo "${env.AZURE_CLIENT_ID}"
                     sh "az login --service-principal -u $AZURE_CLIENT_ID --password $AZURE_CLIENT_SECRET  --tenant $AZURE_TENANT_ID --verbose"
                     sh 'az account list --output table --verbose'
@@ -21,6 +20,13 @@ pipeline {
                     --name $RESOURCE_GROUP_NAME \
                     --location $LOCATION"
                     sh 'ls -las'
+
+                    sh 'az group deployment validate \
+                    --name ExampleDeployment \
+                    --resource-group $RESOURCE_GROUP_NAME \
+                    --template-file deployment.json \
+                    --parameters @deployment.parameters.json'
+
                     echo 'End of Deployment'
                 }
             }
